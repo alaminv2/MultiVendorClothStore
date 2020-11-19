@@ -14,16 +14,13 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-template_dir = BASE_DIR / 'templates'
-static_dir = BASE_DIR / 'static'
-media_dir = BASE_DIR / 'media'
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'wh=+mhc)14kq&dk6(uy653^x2zk@k+*l-*#_+7kr%$((#%3fi2'
+SECRET_KEY = 'tg2zao%c#l-5w-unial@+fe9c)v%$_@1i56z0(je6f3ey62xp$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,15 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'app_auth',
-    'app_payment',
-    'app_product',
-    'app_vendor',
-    'crsipy_forms',
-    'django_cleanup.apps.CleanupConfig',
+    'app_login',
 ]
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -66,7 +56,7 @@ ROOT_URLCONF = 'Mannarah.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [template_dir],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -117,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Dhaka'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -130,9 +120,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    static_dir,
-]
 
-MEDIA_ROOT = media_dir
-MEDIA_URL = '/static/'
+
+AUTH_USER_MODEL = 'app_login.MyUser'
