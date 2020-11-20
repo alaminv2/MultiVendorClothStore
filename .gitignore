@@ -1,2 +1,3 @@
 mvcs/
 .vscode/
+db.sqlite3

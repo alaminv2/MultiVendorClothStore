@@ -62,12 +62,20 @@ class Profile(models.Model):
         return True
 
 
+# class Vendor(models.Model):
+#     user = models.OneToOneField(
+#         MyUser, on_delete=models.CASCADE, related_name='seller')
+#     username = models.CharField(max_length=264, blank=True)
+#     full_name = models.CharField(max_length=264, blank=True)
+
+
 @receiver(post_save, sender=MyUser)
 def create_profile(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(user=instance)
+        user = Profile(user=instance)
+        user.save()
 
 
-@receiver(post_save, sender=MyUser)
-def save_profile(sender, instance, **kwargs):
-    instance.profile.save()
+# @receiver(post_save, sender=MyUser)
+# def save_profile(sender, instance, **kwargs):
+#     instance.profile.save()
